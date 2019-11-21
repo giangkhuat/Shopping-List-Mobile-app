@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    card_view:cardBackgroundColor="#FFFFFF"
+    card_view:cardBackgroundColor="#fff6e5"
     card_view:cardCornerRadius="4dp"
     card_view:cardElevation="4dp">
 
@@ -48,7 +48,9 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_below="@+id/category"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                android:textColor="#800000"
+                />
 
             <TextView
                 android:id="@+id/price"
@@ -60,18 +62,20 @@
                 android:layout_alignParentLeft="true"
                 android:text="$ Price"
                 android:textSize="18sp"
-                android:layout_below="@+id/product_name" />
+                android:layout_below="@+id/product_name"
+                android:textColor="#800000"/>
 
             <CheckBox
                 android:id="@+id/status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Purchased"
-                android:textSize="22sp"
+                android:textSize="18sp"
                 android:layout_below="@+id/price"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
-                android:layout_alignParentLeft="true"/>
+                android:layout_alignParentLeft="true"
+                android:textColor="#800000"/>
 
             <TextView
                 android:id="@+id/describe"

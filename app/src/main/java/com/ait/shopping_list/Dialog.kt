@@ -49,12 +49,11 @@ class Dialog : DialogFragment() {
     }
 
     private fun handleErrorMes() {
-        var passed : Boolean = true
         if (etItemName.text.isEmpty()){
             etItemName.error = getString(R.string.error_mes)
         }
-        if (etPrice.text.isEmpty()) {
-            etPrice.error = getString(R.string.error_mes)
+        if (etItemPrice.text.isEmpty()) {
+            etItemPrice.error = getString(R.string.error_mes)
         }
 
         if (etItemStatus.text.isEmpty()) {
@@ -105,7 +104,7 @@ class Dialog : DialogFragment() {
     }
 
 
-
+    /*
     override fun onResume() {
         super.onResume()
 
@@ -127,12 +126,14 @@ class Dialog : DialogFragment() {
 
 
     }
+    */
+
 
     private fun checkFields() : Boolean{
-        return etItemName.text.isNotEmpty() && etPrice.text.isNotEmpty() && etItemStatus.text.isNotEmpty()
+        return etItemName.text.isNotEmpty() && etItemPrice.text.isNotEmpty() && etItemStatus.text.isNotEmpty()
     }
 
-    /*
+
     override fun onResume() {
         super.onResume()
 
@@ -151,7 +152,6 @@ class Dialog : DialogFragment() {
         }
     }
 
-    */
 
 
 

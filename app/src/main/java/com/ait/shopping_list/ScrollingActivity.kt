@@ -20,6 +20,8 @@ import kotlinx.android.synthetic.main.activity_scrolling.*
 import kotlinx.android.synthetic.main.activity_scrolling.toolbar
 import kotlinx.android.synthetic.main.item_dialog.*
 import kotlinx.android.synthetic.main.row.view.*
+import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt
+import android.preference.PreferenceManager
 
 class ScrollingActivity : AppCompatActivity(), Dialog.Handler, AdapterView.OnItemSelectedListener{
     override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -36,6 +38,7 @@ class ScrollingActivity : AppCompatActivity(), Dialog.Handler, AdapterView.OnIte
         const val KEY_ITEM = "KEY_ITEM"
         const val TAG_TODO_DIALOG = "TAG_TODO_DIALOG"
         const val TAG_ITEM_EDIT = "TAG_ITEM_EDIT"
+        const val  KEY_STARTED = "KEY_STARTED"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,6 +52,15 @@ class ScrollingActivity : AppCompatActivity(), Dialog.Handler, AdapterView.OnIte
 
         fabDeleteAll.setOnClickListener {
             adapter.deleteAllItems()
+        }
+
+        if (!wasStartedBefore()) {
+            MaterialTapTargetPrompt.Builder(this)
+                .setTarget(R.id.fab)
+                .setPrimaryText("New item")
+                .setSecondaryText("Click here to create new items")
+                .show()
+            saveWasStarted()
         }
 
         initReyclerView()
@@ -119,4 +131,19 @@ class ScrollingActivity : AppCompatActivity(), Dialog.Handler, AdapterView.OnIte
             }
         }.start()
     }
+
+
+    fun saveWasStarted() {
+        var sharedPref = PreferenceManager.getDefaultSharedPreferences(this)
+        var editor =  sharedPref.edit()
+        editor.putBoolean(KEY_STARTED, true)
+        editor.apply()
+    }
+
+    fun wasStartedBefore() : Boolean {
+        var sharedPref= PreferenceManager.getDefaultSharedPreferences(this)
+        return sharedPref.getBoolean(KEY_STARTED, false )
+    }
+
+
 }

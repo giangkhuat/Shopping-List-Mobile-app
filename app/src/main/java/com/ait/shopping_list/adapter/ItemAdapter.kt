@@ -77,33 +77,12 @@ class ItemAdapter : RecyclerView.Adapter<ItemAdapter.ViewHolder>, ItemTouchHelpe
             (context as ScrollingActivity).showEditDialog(item, holder.adapterPosition)
         }
 
+
         holder.btnView.setOnClickListener {
-            viewDetails(item)
+            (context as ScrollingActivity).showEditDialog(item, holder.adapterPosition)
         }
 
-    }
 
-
-
-    fun viewDetails(item : ShopItem) {
-        val dialogBuilder = AlertDialog.Builder(context)
-        val layoutInflater:LayoutInflater = LayoutInflater.from(context)
-        val dialogView = layoutInflater.inflate(com.ait.shopping_list.R.layout.row, null)
-        dialogView.describe.isVisible = true
-        dialogView.category.isVisible = true
-
-        val bundle = Bundle()
-        bundle.putSerializable(ScrollingActivity.KEY_ITEM, item)
-        dialogBuilder.arguments = bundle
-
-        dialogBuilder.setView(dialogView)
-
-        dialogBuilder.setPositiveButton("OK", { dialog, which ->
-        })
-        dialogBuilder.setNegativeButton("Cancel") {
-                dialog, which -> dialog.cancel()
-        }
-        dialogBuilder.show()
 
     }
 
